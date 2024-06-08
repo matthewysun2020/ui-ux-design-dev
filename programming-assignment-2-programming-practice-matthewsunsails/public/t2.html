@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task 2</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/vendor/bootstrap/css/bootstrap.css"
+    />
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="task-header">
+        <div>
+          <h1>Task 2</h1>
+        </div>
+        <div>
+          <button class="btn btn-light" id="stop-button">Stop</button>
+          <a href="/" class="btn btn-light">Back</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="shape-container">
+            <!-- Have your circles dynamically appear here! -->
+            <!-- Example circle: <div class="p2-circle bg-blue"></div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        const stopButton = document.getElementById("stop-button");
+        const shapeContainer = document.querySelector(".shape-container");
+        let adder;
+
+        // Function to add a new bubble
+        function addBubble() {
+          const bubble = document.createElement("div");
+          bubble.classList.add("p2-circle");
+          const colors = ["bg-red", "bg-orange", "bg-yellow", "bg-green", "bg-blue", "bg-purple"];
+          const randomColor = colors[Math.floor(Math.random() * colors.length)];
+          bubble.classList.add(randomColor);
+
+          // Event listener to hide the bubble when clicked
+          bubble.addEventListener("click", function() {
+            bubble.style.display = "none";
+          });
+
+          shapeContainer.appendChild(bubble);
+        }
+
+        // Start adding bubbles at interval of 1000mx
+        adder = setInterval(addBubble, 1000);
+
+        // Event listener to stop adding bubbles
+        stopButton.addEventListener("click", function() {
+          clearInterval(adder);
+        });
+      });
+    </script>
+  </body>
+</html>

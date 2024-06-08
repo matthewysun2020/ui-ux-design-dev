@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task 3 - Page 1</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/vendor/bootstrap/css/bootstrap.css"
+    />
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="task-header">
+        <div>
+          <h1>Task 3 - Page 1</h1>
+        </div>
+        <div>
+          <a href="/" class="btn btn-light">Back</a>
+        </div>
+      </div>
+
+      <div>
+        <a href="/t3/2">
+          <img src="../images/01.png" alt="duo splash" class="center" id="next-page-image">
+        </a>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('next-page-image').addEventListener('click', function() {
+        window.location.href = '/t3/2';
+      });
+    </script>
+  </body>
+</html>

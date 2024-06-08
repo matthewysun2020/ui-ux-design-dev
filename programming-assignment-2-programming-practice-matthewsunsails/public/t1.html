@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task 1</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/vendor/bootstrap/css/bootstrap.css"
+    />
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="task-header">
+        <div>
+          <h1>Task 1</h1>
+        </div>
+        <div>
+          <button class="btn btn-light" id="reset-button">Reset</button>
+          <a href="/" class="btn btn-light">Back</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="shape-container">
+            <div class="p2-circle bg-purple"></div>
+            <div class="p2-circle bg-purple"></div>
+            <div class="p2-circle bg-purple"></div>
+            <div class="p2-circle bg-purple"></div>
+            <div class="p2-circle bg-purple"></div>
+            <div class="p2-circle bg-green"></div>
+            <div class="p2-circle bg-green"></div>
+            <div class="p2-circle bg-green"></div>
+            <div class="p2-circle bg-green"></div>
+            <div class="p2-circle bg-green"></div>
+            <div class="p2-circle bg-yellow p2-border"></div>
+            <div class="p2-circle bg-yellow p2-border"></div>
+            <div class="p2-circle bg-yellow"></div>
+            <div class="p2-circle bg-yellow"></div>
+            <div class="p2-circle bg-yellow"></div>
+            <div class="p2-circle bg-orange p2-border"></div>
+            <div class="p2-circle bg-orange p2-border"></div>
+            <div class="p2-circle bg-orange"></div>
+            <div class="p2-circle bg-orange"></div>
+            <div class="p2-circle bg-orange"></div>
+            <div class="p2-circle bg-blue"></div>
+            <div class="p2-circle bg-blue"></div>
+            <div class="p2-circle bg-blue p2-border"></div>
+            <div class="p2-circle bg-blue p2-border"></div>
+            <div class="p2-circle bg-blue"></div>
+            <div class="p2-circle" id="gradient-circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      // This is the implementation for the "Reset" button:
+
+      function resetBubble(b) {
+        b.style.display = "block";
+        b.style.visibility = "visible";
+      }
+
+      function resetAllBubbles() {
+        const allBubbles = document.querySelectorAll(".p2-circle");
+        for (const bubble of allBubbles) {
+          resetBubble(bubble);
+        }
+      }
+
+      const resetButton = document.getElementById("reset-button");
+      resetButton.addEventListener("click", resetAllBubbles);
+
+      // Your solution here:
+      const bubbles = document.querySelectorAll(".p2-circle");
+
+      bubbles.forEach(bubble => {
+        bubble.addEventListener("click", () => {
+          if (bubble.classList.contains("bg-purple")) {
+            // Clicking on a purple bubble hides all purple bubbles
+            const purpleBubbles = document.querySelectorAll(".bg-purple");
+            purpleBubbles.forEach(purpleBubble => {
+              purpleBubble.style.display = "none";
+            });
+          } else if (bubble.classList.contains("bg-green")) {
+            // Clicking on a green bubble hides all green and blue bubbles
+            const greenAndBlueBubbles = document.querySelectorAll(".bg-green, .bg-blue");
+            greenAndBlueBubbles.forEach(greenOrBlueBubble => {
+              greenOrBlueBubble.style.display = "none";
+            });
+          } else if (bubble.classList.contains("bg-orange") && bubble.classList.contains("p2-border")) {
+            // Clicking on an orange bordered bubble hides just that clicked bubble
+            bubble.style.display = "none";
+          }
+        });
+
+        bubble.addEventListener("mouseover", () => {
+          if (bubble.id === "gradient-circle") {
+            // Hovering over the gradient bubble hides the gradient bubble
+            bubble.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
